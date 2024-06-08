@@ -1,12 +1,12 @@
-<header>
-    <div class="flex justify-between">
+<header class="w-screen">
+    <div class="flex justify-between px-10 pt-5">
         <%= link_to "My Tasks", root_path %>
         
         <nav>
-            <ul class="flex justify-between">
-                <li><%= link_to "Due Today", "#" %></li>
-                <li><%= link_to "Categories", "#" %></li>
-                <li><%= link_to "All Tasks", "#" %></li>
+            <ul class="flex justify-between gap-3">
+                <li class="hover:underline"><%= link_to "Due Today", "#" %></li>
+                <li class="hover:underline"><%= link_to "Categories", categories_path %></li>
+                <li class="hover:underline"><%= link_to "All Tasks", tasks_path %></li>
             </ul>
         </nav>
     </div>
