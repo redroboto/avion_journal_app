@@ -11,8 +11,8 @@
         </nav>
 
         <% if user_signed_in? %>
+            <%= link_to "My Profile", edit_user_registration_path %>
             <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-            <%= link_to "Profile", edit_user_registration_path %>
         <% else %>
             <%= button_to "Sign In", new_user_session_path %>
         <% end %>
