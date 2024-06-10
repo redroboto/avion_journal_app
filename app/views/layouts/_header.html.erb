@@ -10,8 +10,9 @@
             </ul>
         </nav>
 
-        <% if current_user %>
+        <% if user_signed_in? %>
             <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+            <%= link_to "Profile", edit_user_registration_path %>
         <% else %>
             <%= button_to "Sign In", new_user_session_path %>
         <% end %>
