@@ -1,11 +1,11 @@
 class Task < ApplicationRecord
-  belongs_to :category, inverse_of: :tasks
+  belongs_to :category
   belongs_to :user
 
   before_validation :find_or_set_category_id
 
   private
-
+# method to check if there is already an existing category for this task
   def find_or_set_category_id
     category_on_record = Category.find_by(name: self.category_name)
 

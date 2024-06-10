@@ -9,5 +9,11 @@
                 <li class="hover:underline"><%= link_to "All Tasks", tasks_path %></li>
             </ul>
         </nav>
+
+        <% if current_user %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+            <%= button_to "Sign In", new_user_session_path %>
+        <% end %>
     </div>
 </header>
