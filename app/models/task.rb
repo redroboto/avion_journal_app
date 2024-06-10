@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
-  belongs_to :category
+  belongs_to :category, inverse_of: :tasks
+  belongs_to :user
 
   before_validation :find_or_set_category_id
 
