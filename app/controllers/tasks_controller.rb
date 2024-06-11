@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  # before_action :set_category, only: %i[ create ]
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -21,7 +22,9 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
+    # @category = current_user.categories.find_by(name: task.category_name)
     @task = Task.new(task_params)
+    # @task.user_id = current_user.id
 
     respond_to do |format|
       if @task.save
@@ -58,6 +61,11 @@ class TasksController < ApplicationController
   end
 
   private
+
+    # def set_category
+    #   @category = current_user.categories.find_by(name: @task.category_name)
+    # end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
@@ -65,6 +73,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:description, :checked, :due_date, :category_name, :category_id)
+      params.require(:task).permit(:description, :checked, :due_date, :category_id, :user_id)
     end
 end
